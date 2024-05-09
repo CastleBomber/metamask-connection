@@ -1,0 +1,5 @@
+Tutorial: Connection MetaMask to a ReactJS Web App by Rishab Kattimani
+https://www.youtube.com/watch?v=be6zW0yVS18&ab_channel=RishabKattimani
+
+"utils" has been deprecated. Use this: ethers.formatEther(balance);  
+https://stackoverflow.com/questions/75363398/export-utils-imported-as-utils-was-not-found-in-ethers

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ethers } from "ethers";
+import "./App.css";
 
 const MetaMask = () => {
   const [errorMessage, setErrorMessage] = useState(null);
@@ -20,6 +21,18 @@ const MetaMask = () => {
 
   const accountChanged = (accountName) => {
     setDefaultAccount(accountName);
+    getUserBalance(accountName);
+  };
+
+  const getUserBalance = (accountAddress) => {
+    window.ethereum
+      .request({
+        method: "eth_getBalance",
+        params: [String(accountAddress), "latest"],
+      })
+      .then((balance) => {
+        setUserBalance(ethers.formatEther(balance));
+      });
   };
 
   return (
@@ -28,7 +41,7 @@ const MetaMask = () => {
 
       <button onClick={connectWallet}>Connect Wallet Button</button>
       <h3>Address: {defaultAccount}</h3>
-      <h3>Balance: </h3>
+      <h3>Balance: {userBalance}</h3>
     </div>
   );
 };
